@@ -6,6 +6,13 @@ const CreateNew = ({ addNew, setNotification }) => {
   const author = useField('author');
   const info = useField('info');
 
+  const resetFields = (event) => {
+    event.preventDefault();
+    content.resetField();
+    author.resetField();
+    info.resetField();
+  };
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -26,17 +33,18 @@ const CreateNew = ({ addNew, setNotification }) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input {...content} />
+          <input {...content.props} />
         </div>
         <div>
           author
-          <input {...author} />
+          <input {...author.props} />
         </div>
         <div>
           url for more info
-          <input {...info} />
+          <input {...info.props} />
         </div>
         <button>create</button>
+        <button onClick={resetFields}>reset</button>
       </form>
     </div>
   );

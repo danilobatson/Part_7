@@ -3,19 +3,21 @@ import { useState } from 'react';
 const useField = (name) => {
   const [value, setValue] = useState('');
 
-  const onChange = (event) => {
-    setValue(event.target.value);
+  const onChange = (e) => {
+    setValue(e.target.value);
   };
 
-  const reset = () => {
+  const resetField = () => {
     setValue('');
   };
 
   return {
-    name,
-    value,
-    onChange,
-    reset,
+    props: {
+      name,
+      value,
+      onChange,
+    },
+    resetField,
   };
 };
 
