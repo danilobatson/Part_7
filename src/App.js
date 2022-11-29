@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   useMatch,
 } from 'react-router-dom';
 import {
@@ -36,8 +35,8 @@ const App = () => {
   const [notification, setNotification] = useState('');
 
   const match = useMatch('/anecdotes/:id');
-  const { id } = match.params;
-  const anecdote = match && anecdotes.find((a) => a.id === Number(id));
+  const anecdote =
+    match && anecdotes.find((a) => a.id === Number(match.params.id));
 
   const addNew = (anecdote) => {
     anecdote.id = Math.round(Math.random() * 10000);
